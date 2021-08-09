@@ -1,21 +1,34 @@
-//
-//  ContentView.swift
-//  Memorize2021
-//
-//  Created by Olivier Van hamme on 09/08/2021.
-//
+// ContentView.swift
+
+// MARK: - LIBRARIES -
 
 import SwiftUI
 
+
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+   
+   // MARK: - COMPUTED PROPERTIES
+   
+   var body: some View {
+      
+      return ZStack {
+         RoundedRectangle(cornerRadius: 25.0)
+            .stroke(lineWidth: 3)
+         Text("Hello World")
+      }
+      .foregroundColor(.red)
+      
+   }
 }
 
+
+
+
+
+// MARK: - PREVIEWS -
+
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+   static var previews: some View {
+      ContentView()
+   }
 }
