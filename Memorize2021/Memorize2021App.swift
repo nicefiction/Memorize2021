@@ -1,17 +1,27 @@
-//
-//  Memorize2021App.swift
-//  Memorize2021
-//
-//  Created by Olivier Van hamme on 09/08/2021.
-//
+// Memorize2021App.swift
+
+// MARK: - LIBRARIES -
 
 import SwiftUI
 
+
+
 @main
 struct Memorize2021App: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+   
+   // MARK: - PROPERTIES
+   
+   let game: EmojiMemoryGameViewModel = EmojiMemoryGameViewModel()
+   
+   
+   
+   // MARK: - COMPUTED PROPERTIES
+   
+   var body: some Scene {
+      
+      WindowGroup {
+         
+         ContentView(viewModel: game)
+      }
+   }
 }

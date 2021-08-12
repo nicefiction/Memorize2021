@@ -7,7 +7,7 @@ import SwiftUI
 
 
 
-class EmojiMemoryGameViewModel {
+class EmojiMemoryGameViewModel: ObservableObject {
    
    // MARK: - TYPE PROPERTIES
    
@@ -22,7 +22,7 @@ class EmojiMemoryGameViewModel {
    static func createMemoryGameModel()
    -> MemoryGameModel<String> {
       
-      return MemoryGameModel(numberOfPairsOfCards: 4) { (pairIndex: Int) -> String in
+      return MemoryGameModel(numberOfPairsOfCards: 3) { (pairIndex: Int) -> String in
          return EmojiMemoryGameViewModel.emojis[pairIndex]
       }
    }
@@ -52,7 +52,7 @@ class EmojiMemoryGameViewModel {
    /// it is the source of truth for mu UI , that is not an unreasonable way to look at it as well .
    
    // private(set) var memoryGameModel: MemoryGameModel<String>
-   private var memoryGameModel: MemoryGameModel<String> = EmojiMemoryGameViewModel.createMemoryGameModel()
+   @Published private var memoryGameModel: MemoryGameModel<String> = EmojiMemoryGameViewModel.createMemoryGameModel()
       
    
    /// The ViewModel's role is to be the gatekeeper to the Model .
@@ -89,4 +89,14 @@ class EmojiMemoryGameViewModel {
    /// `private var memoryGameModel: MemoryGameModel<String>`
    /// except for the things that you make public ,
    /// `var cards: Array<MemoryGameModel<String>.Card> {...}`
+   
+   
+   
+   // MARK: - METHODS
+   
+   // User Intent :
+   func choose(_ card: MemoryGameModel<String>.Card) {
+      
+      memoryGameModel.choose(card)
+   }
 }
