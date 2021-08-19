@@ -1,20 +1,16 @@
-// ContentView.swift
+// EmojiMemoryGameView.swift
 
 // MARK: - LIBRARIES -
 
 import SwiftUI
 
 
-struct ContentView: View {
+struct EmojiMemoryGameView: View {
    
    // MARK: - PROPERTY WRAPPERS
    
    //   @State private var cardCount: Int = 20
-   @ObservedObject var viewModel: EmojiMemoryGameViewModel
-   
-   
-   
-   // MARK: - PROPERTIES
+   @ObservedObject var emojiMemoryGame: EmojiMemoryGameViewModel
    
    
    
@@ -24,13 +20,13 @@ struct ContentView: View {
       
       ScrollView {
          LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {
-            ForEach(viewModel.cards) { (card: MemoryGameModel<String>.Card) in
-               CardView(card: card)
+            ForEach(emojiMemoryGame.cards) { (card: MemoryGameModel<String>.Card) in
+               CardView(with: card)
                   .aspectRatio(2/3,
                                contentMode: .fit)
                   .onTapGesture {
                      // Show the intent of the user.
-                     viewModel.choose(card)
+                     emojiMemoryGame.choose(card)
                   }
             }
          }
@@ -52,9 +48,9 @@ struct ContentView_Previews: PreviewProvider {
       
       let game: EmojiMemoryGameViewModel = EmojiMemoryGameViewModel()
       
-      ContentView(viewModel: game)
+      EmojiMemoryGameView(emojiMemoryGame: game)
          .preferredColorScheme(.light)
-      ContentView(viewModel: game)
+      EmojiMemoryGameView(emojiMemoryGame: game)
          .preferredColorScheme(.dark)
    }
 }

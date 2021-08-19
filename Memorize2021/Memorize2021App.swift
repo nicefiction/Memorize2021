@@ -11,7 +11,7 @@ struct Memorize2021App: App {
    
    // MARK: - PROPERTIES
    
-   let game: EmojiMemoryGameViewModel = EmojiMemoryGameViewModel()
+   private let game: EmojiMemoryGameViewModel = EmojiMemoryGameViewModel()
    
    
    
@@ -21,7 +21,7 @@ struct Memorize2021App: App {
       
       WindowGroup {
          
-         ContentView(viewModel: game)
+         EmojiMemoryGameView(emojiMemoryGame: game)
       }
    }
 }

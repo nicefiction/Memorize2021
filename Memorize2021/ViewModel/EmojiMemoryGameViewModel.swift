@@ -9,8 +9,13 @@ import SwiftUI
 
 class EmojiMemoryGameViewModel: ObservableObject {
    
+   typealias Card = MemoryGameModel<String>.Card
+   
+   
+   
    // MARK: - TYPE PROPERTIES
    
+   private
    static let emojis: Array<String> = [
       "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷", "🐸", "🐵", "🐔", "🐧", "🐦", "🐤", "🦄"
    ]
@@ -19,6 +24,7 @@ class EmojiMemoryGameViewModel: ObservableObject {
    
    // MARK: - TYPE METHODS
    
+   private
    static func createMemoryGameModel()
    -> MemoryGameModel<String> {
       
@@ -80,7 +86,9 @@ class EmojiMemoryGameViewModel: ObservableObject {
    
    // MARK: - COMPUTED PROPERTIES
    
-   var cards: Array<MemoryGameModel<String>.Card> {
+   /// We nested the `typealias` inside the class ,
+   /// so the full type of the typealis is `EmojiMemoryGameViewModel.Card`:
+   var cards: Array<EmojiMemoryGameViewModel.Card> {
       
       return memoryGameModel.cards
    }
@@ -95,7 +103,7 @@ class EmojiMemoryGameViewModel: ObservableObject {
    // MARK: - METHODS
    
    // User Intent :
-   func choose(_ card: MemoryGameModel<String>.Card) {
+   func choose(_ card: EmojiMemoryGameViewModel.Card) {
       
       memoryGameModel.choose(card)
    }
